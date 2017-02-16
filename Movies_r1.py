@@ -51,6 +51,7 @@ def write_json_bd():
 
 def read_json_bd():
     with open('movie_data.json', 'r', encoding='utf-8') as file:
+        global data
         data = json.load(file)
 
 
@@ -58,6 +59,7 @@ def read_json_bd():
 # --------------------------------------------------------
 
 def find_film():
+    global ipt
     ipt = str(input('Enter the title: '))
     for i in range(0, len(data)):
         temp = re.findall(ipt, data[i]['title'], re.IGNORECASE)
@@ -67,16 +69,5 @@ def find_film():
 
 # Рекомендации фильмов по названию
 # --------------------------------------------------------
-
-def request_film():
-    global genres_list
-    genres_list = []
-    input_movie = str(input('Enter the title: '))
-    for i in range(0, len(data)):
-        temp = re.findall(ipt, data[i]['title'], re.IGNORECASE)
-        if len(temp) > 0:
-            m_genre = data[i]['genres']
-            for j in range(0, len(data[i]['genres'])):
-                genres_list.append(data[i]['genres'][j]['name'])
-    print(genres_list)
+# Не завершено
 
